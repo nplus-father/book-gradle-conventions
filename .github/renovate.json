@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Asia/Taipei",
+  "schedule": ["every weekend"],
+  "automerge": true,
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "digest", "pin"],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "major"],
+      "groupName": "all dependencies",
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Hugo binary version in BookPlugin.kt",
+      "fileMatch": ["BookPlugin\\.kt$"],
+      "matchStrings": [
+        "// renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)(?: extractVersion=(?<extractVersion>.*?))?\\s*\\n\\s*const val HUGO_VERSION = \"(?<currentValue>[0-9.]+)\""
+      ]
+    }
+  ]
+}
