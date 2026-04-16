@@ -1,7 +1,7 @@
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
-    id("com.gradle.plugin-publish") version "1.3.1"
+    `maven-publish`
 }
 
 repositories {
@@ -15,16 +15,25 @@ dependencies {
 }
 
 gradlePlugin {
-    website.set("https://github.com/Andrewnplus/book-gradle-conventions")
-    vcsUrl.set("https://github.com/Andrewnplus/book-gradle-conventions.git")
-
     plugins {
         create("bookPlugin") {
             id = "com.andrewnplus.book"
             displayName = "Andrew's Hugo Book Convention Plugin"
             description = "Convention plugin for Hugo Book repositories: pins Hugo version, applies Spotless markdown formatting, and registers the stage task."
-            tags.set(listOf("hugo", "hugo-book", "convention", "markdown"))
             implementationClass = "com.andrewnplus.book.BookPlugin"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Andrewnplus/book-gradle-conventions")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user") as String? ?: ""
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key") as String? ?: ""
+            }
         }
     }
 }
