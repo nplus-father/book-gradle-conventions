@@ -1,22 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "timezone": "Asia/Taipei",
-  "schedule": ["every weekend"],
-  "automerge": true,
-  "automergeType": "branch",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["patch", "digest", "pin"],
-      "enabled": false
-    },
-    {
-      "matchUpdateTypes": ["minor", "major"],
-      "groupName": "all dependencies",
-      "automerge": true,
-      "automergeType": "branch"
-    }
-  ],
+  "extends": ["github>nplus-father/workflows//renovate"],
   "customManagers": [
     {
       "customType": "regex",
