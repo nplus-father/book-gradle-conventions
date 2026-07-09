@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.fstaudt.hugo:io.github.fstaudt.hugo.gradle.plugin:0.12.0")
-    implementation("com.diffplug.spotless:com.diffplug.spotless.gradle.plugin:8.4.0")
+    implementation("io.github.fstaudt.hugo:io.github.fstaudt.hugo.gradle.plugin:0.13.0")
+    implementation("com.diffplug.spotless:com.diffplug.spotless.gradle.plugin:8.8.0")
 }
 
 gradlePlugin {

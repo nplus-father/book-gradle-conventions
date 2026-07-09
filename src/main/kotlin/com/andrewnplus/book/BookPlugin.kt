@@ -122,6 +122,6 @@ class BookPlugin : Plugin<Project> {
 
     companion object {
         // renovate: datasource=github-releases depName=gohugoio/hugo extractVersion=^v(?<version>.+)$
-        const val HUGO_VERSION = "0.160.1"
+        const val HUGO_VERSION = "0.164.0"
     }
 }
